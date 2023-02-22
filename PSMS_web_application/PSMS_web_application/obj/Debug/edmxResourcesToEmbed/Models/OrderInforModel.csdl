@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PSMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Accessory">
+    <Key>
+      <PropertyRef Name="A_id" />
+    </Key>
+    <Property Name="A_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AT_id" Type="Int32" Nullable="false" />
+    <Property Name="Quantity_pc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Measurement_kg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="A_Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="IsAvaible" Type="Boolean" />
+    <Property Name="picture" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Accessoriestype" Relationship="Self.FK__Accessori__AT_id__2C3393D0" FromRole="Accessories" ToRole="Accessoriestype" />
+    <NavigationProperty Name="Accessoriestype1" Relationship="Self.FK__Accessori__AT_id__5CD6CB2B" FromRole="Accessories" ToRole="Accessoriestype" />
+    <NavigationProperty Name="Accessoriestype2" Relationship="Self.FK__Accessori__AT_id__6B24EA82" FromRole="Accessories" ToRole="Accessoriestype" />
+  </EntityType>
+  <EntityType Name="Accessoriestype">
+    <Key>
+      <PropertyRef Name="AT_id" />
+    </Key>
+    <Property Name="AT_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccessoriesName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Accessories" Relationship="Self.FK__Accessori__AT_id__2C3393D0" FromRole="Accessoriestype" ToRole="Accessories" />
+    <NavigationProperty Name="Accessories1" Relationship="Self.FK__Accessori__AT_id__5CD6CB2B" FromRole="Accessoriestype" ToRole="Accessories" />
+    <NavigationProperty Name="Accessories2" Relationship="Self.FK__Accessori__AT_id__6B24EA82" FromRole="Accessoriestype" ToRole="Accessories" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="c_ID" />
+    </Key>
+    <Property Name="c_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DeliveryLocation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OrdersDetails" Relationship="Self.FK__OrdersDeta__c_ID__49C3F6B7" FromRole="customer" ToRole="OrdersDetail" />
+    <NavigationProperty Name="OrdersDetails1" Relationship="Self.FK__OrdersDeta__c_ID__5FB337D6" FromRole="customer" ToRole="OrdersDetail" />
+    <NavigationProperty Name="OrdersDetails2" Relationship="Self.FK__OrdersDeta__c_ID__6E01572D" FromRole="customer" ToRole="OrdersDetail" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="P_ID" Type="Int32" Nullable="false" />
+    <Property Name="typeId" Type="Int32" Nullable="false" />
+    <Property Name="ProductPrice" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DeliveryLocation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Plant" Relationship="Self.FK__OrderInfo__P_ID__534D60F1" FromRole="OrderInfo" ToRole="Plants" />
+    <NavigationProperty Name="Plant1" Relationship="Self.FK__OrderInfo__P_ID__5DCAEF64" FromRole="OrderInfo" ToRole="Plants" />
+    <NavigationProperty Name="Plant2" Relationship="Self.FK__OrderInfo__P_ID__6C190EBB" FromRole="OrderInfo" ToRole="Plants" />
+  </EntityType>
+  <EntityType Name="OrdersDetail">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="P_ID" Type="Int32" Nullable="false" />
+    <Property Name="c_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="Self.FK__OrdersDeta__c_ID__49C3F6B7" FromRole="OrdersDetail" ToRole="customer" />
+    <NavigationProperty Name="customer1" Relationship="Self.FK__OrdersDeta__c_ID__5FB337D6" FromRole="OrdersDetail" ToRole="customer" />
+    <NavigationProperty Name="customer2" Relationship="Self.FK__OrdersDeta__c_ID__6E01572D" FromRole="OrdersDetail" ToRole="customer" />
+    <NavigationProperty Name="Plant" Relationship="Self.FK__OrdersDeta__P_ID__48CFD27E" FromRole="OrdersDetail" ToRole="Plants" />
+    <NavigationProperty Name="Plant1" Relationship="Self.FK__OrdersDeta__P_ID__60A75C0F" FromRole="OrdersDetail" ToRole="Plants" />
+    <NavigationProperty Name="Plant2" Relationship="Self.FK__OrdersDeta__P_ID__6EF57B66" FromRole="OrdersDetail" ToRole="Plants" />
+  </EntityType>
+  <EntityType Name="ordersInfor">
+    <Key>
+      <PropertyRef Name="orderid" />
+    </Key>
+    <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PlantType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DeliveryLocation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Plant">
+    <Key>
+      <PropertyRef Name="P_ID" />
+    </Key>
+    <Property Name="P_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="S_ID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity_pc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="P_Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="IsAvaible" Type="Boolean" />
+    <Property Name="picture" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OrderInfoes" Relationship="Self.FK__OrderInfo__P_ID__534D60F1" FromRole="Plants" ToRole="OrderInfo" />
+    <NavigationProperty Name="OrderInfoes1" Relationship="Self.FK__OrderInfo__P_ID__5DCAEF64" FromRole="Plants" ToRole="OrderInfo" />
+    <NavigationProperty Name="OrderInfoes2" Relationship="Self.FK__OrderInfo__P_ID__6C190EBB" FromRole="Plants" ToRole="OrderInfo" />
+    <NavigationProperty Name="OrdersDetails" Relationship="Self.FK__OrdersDeta__P_ID__48CFD27E" FromRole="Plants" ToRole="OrdersDetail" />
+    <NavigationProperty Name="OrdersDetails1" Relationship="Self.FK__OrdersDeta__P_ID__60A75C0F" FromRole="Plants" ToRole="OrdersDetail" />
+    <NavigationProperty Name="OrdersDetails2" Relationship="Self.FK__OrdersDeta__P_ID__6EF57B66" FromRole="Plants" ToRole="OrdersDetail" />
+  </EntityType>
+  <Association Name="FK__Accessori__AT_id__2C3393D0">
+    <End Role="Accessoriestype" Type="Self.Accessoriestype" Multiplicity="1" />
+    <End Role="Accessories" Type="Self.Accessory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accessoriestype">
+        <PropertyRef Name="AT_id" />
+      </Principal>
+      <Dependent Role="Accessories">
+        <PropertyRef Name="AT_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Accessori__AT_id__5CD6CB2B">
+    <End Role="Accessoriestype" Type="Self.Accessoriestype" Multiplicity="1" />
+    <End Role="Accessories" Type="Self.Accessory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accessoriestype">
+        <PropertyRef Name="AT_id" />
+      </Principal>
+      <Dependent Role="Accessories">
+        <PropertyRef Name="AT_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Accessori__AT_id__6B24EA82">
+    <End Role="Accessoriestype" Type="Self.Accessoriestype" Multiplicity="1" />
+    <End Role="Accessories" Type="Self.Accessory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accessoriestype">
+        <PropertyRef Name="AT_id" />
+      </Principal>
+      <Dependent Role="Accessories">
+        <PropertyRef Name="AT_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__c_ID__49C3F6B7">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="c_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="c_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__c_ID__5FB337D6">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="c_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="c_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__c_ID__6E01572D">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="c_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="c_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderInfo__P_ID__534D60F1">
+    <End Role="Plants" Type="Self.Plant" Multiplicity="1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderInfo__P_ID__5DCAEF64">
+    <End Role="Plants" Type="Self.Plant" Multiplicity="1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderInfo__P_ID__6C190EBB">
+    <End Role="Plants" Type="Self.Plant" Multiplicity="1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__P_ID__48CFD27E">
+    <End Role="Plants" Type="Self.Plant" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__P_ID__60A75C0F">
+    <End Role="Plants" Type="Self.Plant" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__P_ID__6EF57B66">
+    <End Role="Plants" Type="Self.Plant" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PSMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accessories" EntityType="Self.Accessory" />
+    <EntitySet Name="Accessoriestypes" EntityType="Self.Accessoriestype" />
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="OrderInfoes" EntityType="Self.OrderInfo" />
+    <EntitySet Name="OrdersDetails" EntityType="Self.OrdersDetail" />
+    <EntitySet Name="ordersInfors" EntityType="Self.ordersInfor" />
+    <EntitySet Name="Plants" EntityType="Self.Plant" />
+    <AssociationSet Name="FK__Accessori__AT_id__2C3393D0" Association="Self.FK__Accessori__AT_id__2C3393D0">
+      <End Role="Accessoriestype" EntitySet="Accessoriestypes" />
+      <End Role="Accessories" EntitySet="Accessories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Accessori__AT_id__5CD6CB2B" Association="Self.FK__Accessori__AT_id__5CD6CB2B">
+      <End Role="Accessoriestype" EntitySet="Accessoriestypes" />
+      <End Role="Accessories" EntitySet="Accessories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Accessori__AT_id__6B24EA82" Association="Self.FK__Accessori__AT_id__6B24EA82">
+      <End Role="Accessoriestype" EntitySet="Accessoriestypes" />
+      <End Role="Accessories" EntitySet="Accessories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__c_ID__49C3F6B7" Association="Self.FK__OrdersDeta__c_ID__49C3F6B7">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__c_ID__5FB337D6" Association="Self.FK__OrdersDeta__c_ID__5FB337D6">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__c_ID__6E01572D" Association="Self.FK__OrdersDeta__c_ID__6E01572D">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderInfo__P_ID__534D60F1" Association="Self.FK__OrderInfo__P_ID__534D60F1">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrderInfo" EntitySet="OrderInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderInfo__P_ID__5DCAEF64" Association="Self.FK__OrderInfo__P_ID__5DCAEF64">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrderInfo" EntitySet="OrderInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderInfo__P_ID__6C190EBB" Association="Self.FK__OrderInfo__P_ID__6C190EBB">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrderInfo" EntitySet="OrderInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__P_ID__48CFD27E" Association="Self.FK__OrdersDeta__P_ID__48CFD27E">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__P_ID__60A75C0F" Association="Self.FK__OrdersDeta__P_ID__60A75C0F">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__P_ID__6EF57B66" Association="Self.FK__OrdersDeta__P_ID__6EF57B66">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

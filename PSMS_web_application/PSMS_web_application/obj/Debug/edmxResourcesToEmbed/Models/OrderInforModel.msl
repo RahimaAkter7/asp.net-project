@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PSMSModelStoreContainer" CdmEntityContainer="PSMSEntities">
+    <EntitySetMapping Name="Accessories">
+      <EntityTypeMapping TypeName="PSMSModel.Accessory">
+        <MappingFragment StoreEntitySet="Accessories">
+          <ScalarProperty Name="A_id" ColumnName="A_id" />
+          <ScalarProperty Name="AT_id" ColumnName="AT_id" />
+          <ScalarProperty Name="Quantity_pc" ColumnName="Quantity_pc" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="Measurement_kg" ColumnName="Measurement_kg" />
+          <ScalarProperty Name="A_Price" ColumnName="A_Price" />
+          <ScalarProperty Name="IsAvaible" ColumnName="IsAvaible" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accessoriestypes">
+      <EntityTypeMapping TypeName="PSMSModel.Accessoriestype">
+        <MappingFragment StoreEntitySet="Accessoriestype">
+          <ScalarProperty Name="AT_id" ColumnName="AT_id" />
+          <ScalarProperty Name="AccessoriesName" ColumnName="AccessoriesName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="PSMSModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="c_ID" ColumnName="c_ID" />
+          <ScalarProperty Name="customerName" ColumnName="customerName" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderInfoes">
+      <EntityTypeMapping TypeName="PSMSModel.OrderInfo">
+        <MappingFragment StoreEntitySet="OrderInfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+          <ScalarProperty Name="typeId" ColumnName="typeId" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersDetails">
+      <EntityTypeMapping TypeName="PSMSModel.OrdersDetail">
+        <MappingFragment StoreEntitySet="OrdersDetail">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+          <ScalarProperty Name="c_ID" ColumnName="c_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ordersInfors">
+      <EntityTypeMapping TypeName="PSMSModel.ordersInfor">
+        <MappingFragment StoreEntitySet="ordersInfor">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+          <ScalarProperty Name="PlantType" ColumnName="PlantType" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plants">
+      <EntityTypeMapping TypeName="PSMSModel.Plant">
+        <MappingFragment StoreEntitySet="Plants">
+          <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+          <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+          <ScalarProperty Name="Quantity_pc" ColumnName="Quantity_pc" />
+          <ScalarProperty Name="P_Price" ColumnName="P_Price" />
+          <ScalarProperty Name="IsAvaible" ColumnName="IsAvaible" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

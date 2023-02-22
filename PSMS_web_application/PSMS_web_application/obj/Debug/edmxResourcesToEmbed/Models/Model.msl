@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PSMSModelStoreContainer" CdmEntityContainer="PSMSEntitiesOrderInfo">
+    <EntitySetMapping Name="OrderInfoes">
+      <EntityTypeMapping TypeName="PSMSModel.OrderInfo">
+        <MappingFragment StoreEntitySet="OrderInfo">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PSMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Accessories">
+    <Key>
+      <PropertyRef Name="A_id" />
+    </Key>
+    <Property Name="A_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AT_id" Type="int" Nullable="false" />
+    <Property Name="Quantity_pc" Type="nvarchar" MaxLength="50" />
+    <Property Name="size" Type="nvarchar" MaxLength="50" />
+    <Property Name="Measurement_kg" Type="nvarchar" MaxLength="50" />
+    <Property Name="A_Price" Type="money" Nullable="false" />
+    <Property Name="IsAvaible" Type="bit" />
+    <Property Name="picture" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accessoriestype">
+    <Key>
+      <PropertyRef Name="AT_id" />
+    </Key>
+    <Property Name="AT_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccessoriesName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="c_ID" />
+    </Key>
+    <Property Name="c_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DeliveryLocation" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="P_ID" Type="int" Nullable="false" />
+    <Property Name="typeId" Type="int" Nullable="false" />
+    <Property Name="ProductPrice" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DeliveryLocation" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="OrderDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdersDetail">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderDate" Type="date" Nullable="false" />
+    <Property Name="P_ID" Type="int" Nullable="false" />
+    <Property Name="c_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ordersInfor">
+    <Key>
+      <PropertyRef Name="orderid" />
+    </Key>
+    <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlantName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PlantType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quantity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="DeliveryLocation" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="OrderDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Plants">
+    <Key>
+      <PropertyRef Name="P_ID" />
+    </Key>
+    <Property Name="P_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlantName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="S_ID" Type="int" Nullable="false" />
+    <Property Name="Quantity_pc" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="P_Price" Type="money" Nullable="false" />
+    <Property Name="IsAvaible" Type="bit" />
+    <Property Name="picture" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Accessori__AT_id__2C3393D0">
+    <End Role="Accessoriestype" Type="Self.Accessoriestype" Multiplicity="1" />
+    <End Role="Accessories" Type="Self.Accessories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accessoriestype">
+        <PropertyRef Name="AT_id" />
+      </Principal>
+      <Dependent Role="Accessories">
+        <PropertyRef Name="AT_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Accessori__AT_id__5CD6CB2B">
+    <End Role="Accessoriestype" Type="Self.Accessoriestype" Multiplicity="1" />
+    <End Role="Accessories" Type="Self.Accessories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accessoriestype">
+        <PropertyRef Name="AT_id" />
+      </Principal>
+      <Dependent Role="Accessories">
+        <PropertyRef Name="AT_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Accessori__AT_id__6B24EA82">
+    <End Role="Accessoriestype" Type="Self.Accessoriestype" Multiplicity="1" />
+    <End Role="Accessories" Type="Self.Accessories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accessoriestype">
+        <PropertyRef Name="AT_id" />
+      </Principal>
+      <Dependent Role="Accessories">
+        <PropertyRef Name="AT_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderInfo__P_ID__534D60F1">
+    <End Role="Plants" Type="Self.Plants" Multiplicity="1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderInfo__P_ID__5DCAEF64">
+    <End Role="Plants" Type="Self.Plants" Multiplicity="1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderInfo__P_ID__6C190EBB">
+    <End Role="Plants" Type="Self.Plants" Multiplicity="1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__c_ID__49C3F6B7">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="c_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="c_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__c_ID__5FB337D6">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="c_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="c_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__c_ID__6E01572D">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="c_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="c_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__P_ID__48CFD27E">
+    <End Role="Plants" Type="Self.Plants" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__P_ID__60A75C0F">
+    <End Role="Plants" Type="Self.Plants" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__P_ID__6EF57B66">
+    <End Role="Plants" Type="Self.Plants" Multiplicity="1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="P_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PSMSModelStoreContainer">
+    <EntitySet Name="Accessories" EntityType="Self.Accessories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Accessoriestype" EntityType="Self.Accessoriestype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrdersDetail" EntityType="Self.OrdersDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ordersInfor" EntityType="Self.ordersInfor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plants" EntityType="Self.Plants" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Accessori__AT_id__2C3393D0" Association="Self.FK__Accessori__AT_id__2C3393D0">
+      <End Role="Accessoriestype" EntitySet="Accessoriestype" />
+      <End Role="Accessories" EntitySet="Accessories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Accessori__AT_id__5CD6CB2B" Association="Self.FK__Accessori__AT_id__5CD6CB2B">
+      <End Role="Accessoriestype" EntitySet="Accessoriestype" />
+      <End Role="Accessories" EntitySet="Accessories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Accessori__AT_id__6B24EA82" Association="Self.FK__Accessori__AT_id__6B24EA82">
+      <End Role="Accessoriestype" EntitySet="Accessoriestype" />
+      <End Role="Accessories" EntitySet="Accessories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderInfo__P_ID__534D60F1" Association="Self.FK__OrderInfo__P_ID__534D60F1">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderInfo__P_ID__5DCAEF64" Association="Self.FK__OrderInfo__P_ID__5DCAEF64">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderInfo__P_ID__6C190EBB" Association="Self.FK__OrderInfo__P_ID__6C190EBB">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__c_ID__49C3F6B7" Association="Self.FK__OrdersDeta__c_ID__49C3F6B7">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__c_ID__5FB337D6" Association="Self.FK__OrdersDeta__c_ID__5FB337D6">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__c_ID__6E01572D" Association="Self.FK__OrdersDeta__c_ID__6E01572D">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__P_ID__48CFD27E" Association="Self.FK__OrdersDeta__P_ID__48CFD27E">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__P_ID__60A75C0F" Association="Self.FK__OrdersDeta__P_ID__60A75C0F">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__P_ID__6EF57B66" Association="Self.FK__OrdersDeta__P_ID__6EF57B66">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
